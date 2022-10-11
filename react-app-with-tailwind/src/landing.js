@@ -45,7 +45,7 @@ function Landing() {
                       {item.name}
                     </a>
                   ))}
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                  <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                     Log in
                   </a>
                 </div>
@@ -93,7 +93,7 @@ function Landing() {
                     ))}
                   </div>
                   <a
-                    href="#"
+                    href="/login"
                     className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
                   >
                     Log in
