@@ -9,7 +9,7 @@ const icon = [
     {
       id: 1,
       name: 'Create a Poll',
-      href: '#',
+      href: './CreatePoll',
       imageSrc: 'https://i.ibb.co/199svFQ/newpoll.png',
       imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
@@ -136,7 +136,7 @@ function Home() {
                         <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-center">
                             <div className="rounded-md shadow">
                               <a
-                                href="./login"
+                                href= {icon.href}
                                 className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-bold text-yellow-300 hover:bg-indigo-700 md:py-4 md:px-10 md:text-2xl"
                               >
                                 {icon.name}
