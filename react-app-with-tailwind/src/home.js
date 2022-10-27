@@ -15,15 +15,15 @@ const icon = [
     },
     {
       id: 2,
-      name: 'Cari Jodoh',
-      href: '#',
+      name: 'Insert a VoteCode',
+      href: './VoteCode',
       imageSrc: 'https://i.ibb.co/QCMJ1d1/searchpoll.png',
       imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
       id: 3,
       name: 'View History',
-      href: '#',
+      href: './ViewHistory',
       imageSrc: 'https://i.ibb.co/f1RC6RX/historypoll.png',
       imageAlt: 'Person using a pen to cross a task off a iconivity paper card.',
     },
@@ -108,7 +108,7 @@ function Home() {
                 </div>
               </Popover.Panel>
             </Transition>
-          </Popover>
+          </Popover> 
 
 
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
