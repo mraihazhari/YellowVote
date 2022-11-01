@@ -4,29 +4,33 @@ import { Popover, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import React from "react";
 import { Helmet } from "react-helmet";
+import newpolling from './image/newpoll.png';
+import searchpolling from './image/searchpoll.png';
+import historypolling from './image/historypoll.png'
 
 const icon = [
     {
       id: 1,
       name: 'Create a Poll',
       href: './CreatePoll',
-      imageSrc: 'https://i.ibb.co/199svFQ/newpoll.png',
+      imageSrc: newpolling,
       imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
       id: 2,
       name: 'Insert a VoteCode',
       href: './VoteCode',
-      imageSrc: 'https://i.ibb.co/QCMJ1d1/searchpoll.png',
+      imageSrc: searchpolling,
       imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
       id: 3,
       name: 'View History',
       href: './ViewHistory',
-      imageSrc: 'https://i.ibb.co/f1RC6RX/historypoll.png',
+      imageSrc: historypolling,
       imageAlt: 'Person using a pen to cross a task off a iconivity paper card.',
     },
+    
   ]
 
 function Home() {
