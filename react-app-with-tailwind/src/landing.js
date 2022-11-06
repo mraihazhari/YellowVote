@@ -12,6 +12,10 @@ function classNames(...classes) {
 }
 
 function Landing() {
+
+const google  = ()=>{
+  window.open("http://localhost:5000/auth/google/callback");
+}
   return (   
     
       <div className="min-h-full">
@@ -104,7 +108,7 @@ function Landing() {
                     Log in with Office
                   </a>
                 </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
+                <div className="mt-3 sm:mt-0 sm:ml-3" onClick={google}>
                   <a
                     href="#"
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-blue-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
