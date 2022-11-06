@@ -25,14 +25,11 @@ function isLoggedIn(req, res, next) {
   
   app.get( '/auth/google/callback',
     passport.authenticate( 'google', {
-      successRedirect: '/protected',
+      successRedirect: 'http://localhost:3000/home',
       failureRedirect: '/auth/google/failure'
     })
   );
   
-  app.get('/protected', isLoggedIn, (req, res) => {
-    res.send(`Hello ${req.user.displayName}`);
-  });
   
   app.get('/logout', (req, res) => {
     req.logout();
