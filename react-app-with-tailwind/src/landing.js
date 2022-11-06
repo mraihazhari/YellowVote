@@ -12,16 +12,14 @@ function Landing() {
     
     <div className="relative overflow-hidden bg-yellow-300">
         <Helmet>
-        <style>{"body { background-color: rgb(15 11 199); }"}</style>
-      </Helmet>
+        <style>{"body { background-color: rgb(20 30 199); }"}</style>
+        </Helmet>
       <div className="mx-auto max-w-7xl">
         <div className="relative z-10 bg-yellow-300 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
-
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
+            <div className="sm:text-center lg:text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-8xl">
-                <span className="block text-indigo-800 xl:inline">Welcome to</span>{' '}
-                <span className="block text-indigo-800 xl:inline">YellowVote !</span>
+                <span className="block text-indigo-800 xl:inline">Welcome To YellowVote!</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-14 md:text-3xl lg:mx-0">
               YellowVote is an online voting platform made exclusively for the Universitas Indonesia community

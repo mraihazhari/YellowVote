@@ -1,12 +1,12 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Popover, Transition, Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import React from "react";
 import { Helmet } from "react-helmet";
 import newpolling from './image/newpoll.png';
 import searchpolling from './image/searchpoll.png';
 import historypolling from './image/historypoll.png'
+
 
 const icon = [
     {
@@ -37,11 +37,11 @@ function Home() {
   return (
     
     <div className="relative overflow-hidden bg-yellow-300">
-        <Helmet>
+      <Helmet>
         <style>{"body { background-color: rgb(253 224 71); }"}</style>
       </Helmet>
       <div className="mx-auto max-w-7xl">
-        <div className="relative z-10 bg-yellow-300 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-full lg:pb-28 xl:pb-32">
+      <div className="relative z-10 bg-yellow-300 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-full lg:pb-28 xl:pb-32">
         
         <Popover>
             <div className="relative px-4 pt-6 sm:px-6 lg:px-8">
@@ -118,7 +118,7 @@ function Home() {
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-5xl">
-                <span className="block text-indigo-800 xl:inline">Hello! what would you like to do?</span>{' '}
+                <span className="block text-indigo-800 xl:inline">Hello! What Would You Like To Do?</span>{' '}
               </h1>
               <p className="mt-3 text-base font-bold text-indigo-800 sm:mx-auto sm:mt-5 sm:max-w-full sm:text-lg md:mt-7 md:text-2xl lg:mx-0">
               Create a new poll, insert a VoteCode, or view your poll history.
