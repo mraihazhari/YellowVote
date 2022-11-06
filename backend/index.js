@@ -1,8 +1,13 @@
 const cookieSession = require("cookie-session");
 const express = require("express");
 const passport = require("passport");
+
+const authRoute = require("./auth")
+
 const app = express()
 const cors = require("cors");
+
+const passportSetup = require("./passport")
 
 console.log("test");
 
@@ -21,6 +26,8 @@ app.use(cors({
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
 }))
+
+app.use("/auth", authRoute);
 
 app.listen("5000", ()=>{
     console.log("Server is running!");
