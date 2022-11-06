@@ -11,7 +11,7 @@ const navigation = [
   { name: 'Create', href: './CreatePoll', current: false },
   { name: 'Vote', href: './VoteCode', current: false },
   { name: 'History', href: './ViewHistory', current: false },
-  { name: 'Change Account', href: '#', current: false },
+  { name: 'Change Account', href: './landing', current: false },
 ]
 
 function classNames(...classes) {
@@ -141,7 +141,7 @@ function Home() {
                             <div className="rounded-md shadow">
                               <a
                                 href= {icon.href}
-                                className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-bold text-yellow-300 hover:bg-indigo-700 md:py-4 md:px-10 md:text-2xl"
+                                className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-700 px-8 py-3 text-base font-bold text-yellow-300 hover:bg-indigo-800 md:py-4 md:px-10 md:text-2xl"
                               >
                                 {icon.name}
                               </a>
