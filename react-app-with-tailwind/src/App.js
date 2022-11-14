@@ -3,7 +3,7 @@ import './index.css';
 import Landing from './landing';
 import Home from './home';
 import CreatePoll from './CreatePoll';
-import searchPoll from './searchPoll';
+import SearchPoll from './searchPoll';
 
 import React from "react";
 function App() {
@@ -13,7 +13,7 @@ function App() {
             <Route exact path="/landing" element={<Landing />} />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
-            <Route exact path="/searchPoll" element={<searchPoll />} />
+            <Route exact path="/searchPoll" element={<SearchPoll />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}
