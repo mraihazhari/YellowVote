@@ -4,6 +4,7 @@ import Landing from './landing';
 import Login from './login';
 import Home from './home';
 import CreatePoll from './CreatePoll';
+import searchPoll from './searchPoll';
 
 import React from "react";
 function App() {
@@ -14,6 +15,7 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
+            <Route exact path="/searchPoll" element={<searchPoll />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}

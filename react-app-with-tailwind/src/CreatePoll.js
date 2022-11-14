@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet";
 const navigation = [
   { name: 'YellowVote', href: './home', current: true },
   { name: 'Create', href: './CreatePoll', current: false },
-  { name: 'Vote', href: './VoteCode', current: false },
-  { name: 'History', href: './ViewHistory', current: false },
-  { name: 'Change Account', href: '#', current: false },
+  { name: 'Search', href: './searchPoll', current: false },
+  { name: 'History', href: './history', current: false },
+  { name: 'Change Account', href: './landing', current: false },
 ]
 
 function classNames(...classes) {
@@ -195,7 +195,7 @@ function CreatePoll() {
     )
   }
 
-  export default CreatePoll;
+export default CreatePoll;
 
           
       
