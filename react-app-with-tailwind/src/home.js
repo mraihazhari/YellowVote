@@ -9,8 +9,8 @@ import historypolling from './image/historypoll.png'
 const navigation = [
   { name: 'YellowVote', href: './home', current: true },
   { name: 'Create', href: './CreatePoll', current: false },
-  { name: 'Vote', href: './VoteCode', current: false },
-  { name: 'History', href: './ViewHistory', current: false },
+  { name: 'Search', href: './searchPoll', current: false },
+  { name: 'History', href: './history', current: false },
   { name: 'Change Account', href: './landing', current: false },
 ]
 
@@ -28,15 +28,15 @@ const icon = [
     },
     {
       id: 2,
-      name: 'Insert a VoteCode',
-      href: './VoteCode',
+      name: 'Search a Poll',
+      href: './searchPoll',
       imageSrc: searchpolling,
       imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
       id: 3,
       name: 'View History',
-      href: './ViewHistory',
+      href: './history',
       imageSrc: historypolling,
       imageAlt: 'Person using a pen to cross a task off a iconivity paper card.',
     },
