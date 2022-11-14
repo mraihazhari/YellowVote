@@ -1,7 +1,6 @@
 import { BrowserRouter as Router,Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
 import Landing from './landing';
-import Login from './login';
 import Home from './home';
 import CreatePoll from './CreatePoll';
 
@@ -11,7 +10,6 @@ function App() {
         <Router>
           <Routes>
             <Route exact path="/landing" element={<Landing />} />
-            <Route exact path="/login" element={<Login />} />
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
             <Route
