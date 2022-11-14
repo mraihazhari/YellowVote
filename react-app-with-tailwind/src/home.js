@@ -148,7 +148,7 @@ function Home() {
                             </div>
                           </div>
                         </a>
-                        
+
                     ))}
                     </div>
                 </div>

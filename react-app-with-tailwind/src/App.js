@@ -4,8 +4,9 @@ import Landing from './landing';
 import Home from './home';
 import CreatePoll from './CreatePoll';
 import SearchPoll from './searchPoll';
-
+import History from './history';
 import React from "react";
+
 function App() {
     return (
         <Router>
@@ -14,6 +15,7 @@ function App() {
             <Route exact path="/home" element={<Home />} />
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
             <Route exact path="/searchPoll" element={<SearchPoll />} />
+            <Route exact path="/history" element={<History />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}
