@@ -1,10 +1,13 @@
 import { Disclosure } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, UserCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import React from "react";
 import { Helmet } from "react-helmet";
 import newpolling from './image/newpoll.png';
 import searchpolling from './image/searchpoll.png';
-import historypolling from './image/historypoll.png'
+import historypolling from './image/historypoll.png';
+import { useState } from "react";
+import {useEffect, eseState} from "react";
+import { UNSAFE_enhanceManualRouteObjects } from 'react-router-dom';
 
 const navigation = [
   { name: 'YellowVote', href: './home', current: true },
@@ -44,6 +47,8 @@ const icon = [
   ]
 
 function Home() {
+
+
   return (
     
     <div className="relative overflow-hidden bg-yellow-300">
@@ -118,7 +123,8 @@ function Home() {
           <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
             <div className="sm:text-center lg:text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-5xl">
-                <span className="block text-indigo-800 xl:inline">Hello! What Would You Like To Do?</span>{' '}
+                <span className="block text-indigo-800 xl:inline">Hello!</span>{' '}
+                <span className="block text-indigo-800 xl:inline">What Would You Like To Do?</span>{' '}
               </h1>
               <p className="mt-3 text-base font-bold text-indigo-800 sm:mx-auto sm:mt-5 sm:max-w-full sm:text-lg md:mt-7 md:text-2xl lg:mx-0">
               Create a new poll, insert a VoteCode, or view your poll history.

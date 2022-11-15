@@ -9,7 +9,6 @@ import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 
 function App() {
-
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -38,7 +37,6 @@ function App() {
   }, []);
 
   console.log(user);
-  
 
     return (
         <Router>
