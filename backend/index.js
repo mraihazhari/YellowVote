@@ -14,6 +14,16 @@ function isLoggedIn(req, res, next) {
   app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.use(
+    cors({
+      origin: "http://localhost:3000", // <-- location of the react app were connecting to
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true, // allow session cookie from browser to pass through
+    })
+  )
+
+  app.use("/auth", authRoute);
   
   app.get('/', (req, res) => {
     res.send('<a href="/auth/google">Authenticate with Google</a>');
@@ -28,6 +38,7 @@ function isLoggedIn(req, res, next) {
       successRedirect: 'http://localhost:3000/home',
       failureRedirect: '/auth/google/failure'
     })
+    
   );
   
   
@@ -41,4 +52,5 @@ function isLoggedIn(req, res, next) {
     res.send('Failed to authenticate..');
   });
   
-  app.listen(5000, () => console.log('listening on port: 5000'));
+  app.listen(5000, () => console.log('listening on port: 5000 a'));
+
