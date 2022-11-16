@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 
 function App() {
+  
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -35,14 +36,13 @@ function App() {
     };
     getUser();
   }, []);
-
-
+  
 
     return (
         <Router>
           <Routes>
             <Route exact path="/landing" element={<Landing />} />
-            <Route exact path="/home" element={<Home user={user} />} />
+            <Route exact path="/home" element={<Home user={user}/>} />
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
             <Route exact path="/searchPoll" element={<SearchPoll />} />
             <Route exact path="/history" element={<History />} />
