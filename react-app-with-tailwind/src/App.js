@@ -5,6 +5,7 @@ import Home from './home';
 import CreatePoll from './CreatePoll';
 import SearchPoll from './searchPoll';
 import History from './history';
+import VoteCandidate from './voteCandidate';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
             <Route exact path="/searchPoll" element={<SearchPoll />} />
             <Route exact path="/history" element={<History />} />
+            <Route exact path="/voteCandidate" element={<History />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}
