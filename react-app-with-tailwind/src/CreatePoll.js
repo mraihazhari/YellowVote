@@ -107,7 +107,7 @@ function CreatePoll() {
                           type="text"
                           name="title"
                           id="title"
-                          className="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
+                          className="block w-full flex-1 rounded-md border-gray-300 focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
                           placeholder="Enter poll title here"
                         />
                       </div>
@@ -127,21 +127,6 @@ function CreatePoll() {
                         placeholder="Enter poll description here"
                         defaultValue={''}
                       />
-                    </div>
-                    <p className="mt-2 text-sm text-indigo-800">
-                      Brief description for your poll.
-                    </p>
-                  </div>
-
-                  <div>
-                    <div className="mt-3 flex items-center">
-                      <a
-                        type="button"
-                        href="#"
-                        className="ml-0 rounded-md border bg-blue-700 py-2 px-3 text-sm font-medium leading-4 text-yellow-300 shadow-sm hover:bg-blue-800  focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
-                      >
-                        Add a choice
-                      </a>
                     </div>
                   </div>
 
@@ -177,7 +162,86 @@ function CreatePoll() {
                       </div>
                     </div>
                   </div>
-                </div>
+
+                  <label className="py-px block text-base text-center rounded-md bg-blue-700 font-medium text-yellow-300">Insert a Choice</label>
+                 <form action="#" method="POST">
+                  <div className="grid grid-cols-5 gap-6">
+                    <div className="col-span-3 sm:col-span-1">
+                      <label htmlFor="number" className="block text-sm font-medium text-indigo-800">
+                        Number
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="number"
+                          name="number"
+                          id="number"
+                          className="block w-full flex-1 rounded-md border-gray-300 focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-span-3 sm:col-span-4">
+                      <label htmlFor="name" className="block text-sm font-medium text-indigo-800">
+                        Name
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="name"
+                          id="name"
+                          className="block w-full flex-1 rounded-md border-gray-300 focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="description" className="block text-sm font-medium text-indigo-800">
+                      Description
+                    </label>
+                    <div className="mt-1">
+                      <textarea
+                        id="description"
+                        name="description"
+                        rows={2}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
+                        defaultValue={''}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="my-0 flex rounded-md py-12 px-1 pt-1 pb-6">
+                      <div className="space-y-1">
+                        
+                        <div className="flex text-sm text-gray-600">
+                          <label
+                            htmlFor="file-upload-choice"
+                            className="relative cursor-pointer rounded-md bg-yellow-300 font-medium text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
+                          >
+                            <span>Upload a photo</span>
+                            <input id="file-upload-choice" name="file-upload-choice" type="file" className="sr-only" />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="my-0 flex items-center">
+                      <a
+                        type="submit"
+                        href="#"
+                        className="ml-0 rounded-md border bg-blue-700 py-2 px-3 text-sm font-medium leading-4 text-yellow-300 shadow-sm hover:bg-blue-800  focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
+                      >
+                        Add choice
+                      </a>
+                    </div>
+                  </div>
+                </form>
+                
+                  <label className="py-px block text-base text-center rounded-md bg-blue-700 font-medium text-yellow-300">Registered Choices</label>
+
+              </div>
                 <div className="bg-yellow-300 px-4 py-8 text-right sm:px-6">
                   <button
                     type="submit"
