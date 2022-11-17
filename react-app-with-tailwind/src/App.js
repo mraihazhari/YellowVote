@@ -9,10 +9,11 @@ import VoteCandidate from './voteCandidate';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 
+
 function App() {
   
-  const [user, setUser] = useState(null);
 
+  const [user, setUser] = useState(null);
   useEffect(() => {
     const getUser = () => {
       fetch("http://localhost:5000/auth/login/success", {
@@ -37,6 +38,8 @@ function App() {
     };
     getUser();
   }, []);
+
+  sessionStorage.setItem("user", JSON.stringify(user));
   
 
     return (
