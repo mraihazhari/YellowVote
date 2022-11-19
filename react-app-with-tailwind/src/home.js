@@ -14,7 +14,7 @@ const navigation = [
   { name: 'Create', href: './CreatePoll', current: false },
   { name: 'Search', href: './searchPoll', current: false },
   { name: 'History', href: './history', current: false },
-  { name: 'Change Account', href: './landing', current: false },
+  { name: 'Logout', href: './logout', current: false },
 ]
 
 function classNames(...classes) {
