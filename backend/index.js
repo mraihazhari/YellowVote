@@ -35,7 +35,7 @@ function isLoggedIn(req, res, next) {
   
   app.get( '/auth/google/callback',
     passport.authenticate( 'google', {
-      successRedirect: 'http://localhost:3000/home',
+      successRedirect: 'http://localhost:3000/login_page',
       failureRedirect: '/auth/google/failure'
     })
     

@@ -5,6 +5,7 @@ import Home from './home';
 import CreatePoll from './CreatePoll';
 import SearchPoll from './searchPoll';
 import History from './history';
+import Login_func from './login_page' ;
 import VoteCandidate from './voteCandidate';
 import Logout_func from './logout';
 import React, { useState } from "react";
@@ -12,38 +13,6 @@ import {useEffect, eseState} from "react";
 
 
 function App() {
-  
-
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    const getUser = () => {
-      fetch("http://localhost:5000/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
-        .then((response) => {
-          if (response.status === 200) return response.json();
-          throw new Error("authentication has been failed!");
-        })
-        .then((resObject) => {
-          setUser(resObject.user);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    getUser();
-  }, []);
-
-  if (user != null) {
-    sessionStorage.setItem("user", JSON.stringify(user));
-  }
-
   
     return (
         <Router>
@@ -55,6 +24,7 @@ function App() {
             <Route exact path="/history" element={<History />} />
             <Route exact path="/voteCandidate" element={<History />} />
             <Route exact path="/logout" element={<Logout_func />} />
+            <Route exact path="/login_page" element={<Login_func />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}
