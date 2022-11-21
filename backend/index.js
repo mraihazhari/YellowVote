@@ -7,6 +7,10 @@ const passport = require("passport");
 const authRoute = require("./routes/auth");
 const app = express();
 
+
+
+
+
 function isLoggedIn(req, res, next) {
     req.user ? next() : res.sendStatus(401);
   }
@@ -51,6 +55,7 @@ function isLoggedIn(req, res, next) {
   app.get('/auth/google/failure', (req, res) => {
     res.send('Failed to authenticate..');
   });
+  
   
   app.listen(5000, () => console.log('listening on port: 5000 a'));
 

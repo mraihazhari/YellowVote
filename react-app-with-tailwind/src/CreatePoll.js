@@ -15,6 +15,19 @@ function classNames(...classes) {
 }
 
 function CreatePoll() {
+  
+ // const createButton = () => {
+   // const [pollName, setPollName] = useState([]);
+
+    //useEffect(() => {
+      //createPollApi.create().then(res => {
+        //console.log(res);
+      //})
+    //}, []);
+  
+  //}
+ 
+
     return (
       <>
       <Helmet>
