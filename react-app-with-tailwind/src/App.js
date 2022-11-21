@@ -5,6 +5,7 @@ import Home from './home';
 import CreatePoll from './CreatePoll';
 import SearchPoll from './searchPoll';
 import History from './history';
+import HistoryDetail from './historyDetail';
 import Login_func from './login_page' ;
 import VoteCandidate from './voteCandidate';
 import Logout_func from './logout';
@@ -22,7 +23,8 @@ function App() {
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
             <Route exact path="/searchPoll" element={<SearchPoll />} />
             <Route exact path="/history" element={<History />} />
-            <Route exact path="/voteCandidate" element={<History />} />
+            <Route exact path="/historyDetail" element={<HistoryDetail />} /> 
+            <Route exact path="/voteCandidate" element={<VoteCandidate />} />
             <Route exact path="/logout" element={<Logout_func />} />
             <Route exact path="/login_page" element={<Login_func />} />
             <Route
