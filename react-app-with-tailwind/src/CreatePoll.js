@@ -1,6 +1,9 @@
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
+import React, { useState } from "react";
+import Axios from 'axios';
+
 
 const navigation = [
   { name: 'YellowVote', href: './home', current: true },
@@ -15,18 +18,38 @@ function classNames(...classes) {
 }
 
 function CreatePoll() {
-  
- // const createButton = () => {
-   // const [pollName, setPollName] = useState([]);
 
-    //useEffect(() => {
-      //createPollApi.create().then(res => {
-        //console.log(res);
-      //})
-    //}, []);
-  
-  //}
- 
+  const [data, setdata] = useState({
+    title: "",
+    description: "",
+   // candidateNumber: "",
+   // candidateName: "",
+   // candidateDescription: "",
+  })
+  function handle(e){
+    const newdata = {...data}
+    newdata[e.target.id] = e.target.value
+    setdata(newdata)
+    console.log(newdata)
+  }
+  function submit(e){
+    let item = data;
+    let body = {
+      data: {
+        title: item.title,
+        description: item.description
+      }
+    };
+    console.log(body);
+    e.preventDefault()
+    Axios.post('http://localhost:1337/api/createpolls', body)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
     return (
       <>
@@ -107,7 +130,7 @@ function CreatePoll() {
         </header>
         <main className="bg-yellow-300">
         <div className="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST">
+            <form action="#" method="POST" onSubmit={(e) => submit(e)}>
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-yellow-300 px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
@@ -117,6 +140,8 @@ function CreatePoll() {
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
+                          onChange={(e)=>handle(e)}
+                          value={data.title}
                           type="text"
                           name="title"
                           id="title"
@@ -133,6 +158,8 @@ function CreatePoll() {
                     </label>
                     <div className="mt-1">
                       <textarea
+                        onChange={(e)=>handle(e)}
+                        value={data.description}
                         id="description"
                         name="description"
                         rows={3}
@@ -180,27 +207,31 @@ function CreatePoll() {
                  <form action="#" method="POST">
                   <div className="grid grid-cols-5 gap-6">
                     <div className="col-span-3 sm:col-span-1">
-                      <label htmlFor="number" className="block text-sm font-medium text-indigo-800">
+                      <label htmlFor="candidateNumber" className="block text-sm font-medium text-indigo-800">
                         Number
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
+                       //   onChange={(e)=>handle(e)}
+                       //   value={data.candidateNumber}
                           type="number"
-                          name="number"
-                          id="number"
+                          name="candidateNumber"
+                          id="candidateNumber"
                           className="block w-full flex-1 rounded-md border-gray-300 focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
                         />
                       </div>
                     </div>
                     <div className="col-span-3 sm:col-span-4">
-                      <label htmlFor="name" className="block text-sm font-medium text-indigo-800">
+                      <label htmlFor="candidateName" className="block text-sm font-medium text-indigo-800">
                         Name
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
+                     //    onChange={(e)=>handle(e)}
+                     //     value={data.candidateName}
                           type="text"
-                          name="name"
-                          id="name"
+                          name="candidateName"
+                          id="candidateName"
                           className="block w-full flex-1 rounded-md border-gray-300 focus:border-indigo-800 focus:ring-indigo-800 sm:text-sm"
                         />
                       </div>
@@ -213,6 +244,8 @@ function CreatePoll() {
                     </label>
                     <div className="mt-1">
                       <textarea
+                   //     onChange={(e)=>handle(e)}
+                    //    value={data.candidateDescription}
                         id="description"
                         name="description"
                         rows={2}
@@ -242,7 +275,7 @@ function CreatePoll() {
                   <div>
                     <div className="my-0 flex items-center">
                       <a
-                        type="submit"
+                        type="text"
                         href="#"
                         className="ml-0 rounded-md border bg-blue-700 py-2 px-3 text-sm font-medium leading-4 text-yellow-300 shadow-sm hover:bg-blue-800  focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
                       >
