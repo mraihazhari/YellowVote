@@ -51,6 +51,7 @@ function Home() {
   const User = JSON.parse(sessionStorage.getItem("user"));
 
   console.log(User);
+  //console.log(User.emails[0].value);
 
   if (User == null) {
     return <p>Loading profile...</p>;
