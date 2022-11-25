@@ -201,7 +201,7 @@ function CreatePoll() {
                     </div>
                   </div>
                 </div>
-                  <div className="bg-yellow-300 px-4 py-8 text-right sm:px-6">
+                  <div className="bg-yellow-300 px-4 py-8 text-left sm:px-6">
                     <button
                       type="submit"
                       href="./CreatePoll2"

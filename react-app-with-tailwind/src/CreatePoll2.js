@@ -1,7 +1,7 @@
-import { Disclosure } from '@headlessui/react'
+import { Disclosure, Dialog, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import Axios from 'axios';
 
 const navigation = [
@@ -16,7 +16,32 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+const products = [
+  {
+    id: 1,
+    name: 'Throwback Hip Bag',
+    href: '#',
+    description: 'Salmon',
+    number: '1',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+  },
+  {
+    id: 2,
+    name: 'Medium Stuff Satchel',
+    href: '#',
+    description: 'Blue',
+    number: '2',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageAlt:'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  },
+  // More products...
+]
+
 function CreatePoll2() {
+
+  const [open, setOpen] = useState(false)
+
     return(
        <>
        <Helmet>
@@ -94,7 +119,7 @@ function CreatePoll2() {
           </div>
         </header>
         <main className="bg-yellow-300">
-        <div className="mt-5 md:col-span-2 md:mt-0">
+          <div className="mt-5 md:col-span-2 md:mt-0">
             <form action="#" method="POST">
               <div className="shadow sm:overflow-hidden sm:rounded-md">
                 <div className="space-y-6 bg-yellow-300 px-4 py-5 sm:p-6">
@@ -156,7 +181,7 @@ function CreatePoll2() {
                   </div>
 
                   <div>
-                    <label className="py-5 block text-sm font-medium text-indigo-800">Photo</label>
+                    <label className="py-3 block text-sm font-medium text-indigo-800">Photo</label>
                     <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-blue-700 py-12 px-6 pt-5 pb-6">
                       <div className="space-y-1 text-center">
                         <svg
@@ -187,22 +212,138 @@ function CreatePoll2() {
                       </div>
                     </div>
                   </div>
-                </div>
-                  <div className="bg-yellow-300 px-4 py-8 text-right sm:px-6">
+                  </div>
+                  <div className="relative bg-yellow-300 px-4 py-10 sm:px-6">
                     <button
                       type="submit"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-700 py-2 px-4 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
+                      className="absolute left-6 bottom-7 inline-flex rounded-md border border-transparent bg-blue-700 py-2 px-4 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
                     >
                       Add Choice
                     </button>
+                    <button
+                      type="button"
+                      className="absolute right-6 bottom-7 inline-flex right-0 rounded-md border border-transparent bg-blue-700 py-2 px-4 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
+                      onClick={() => setOpen(true)}
+                    >
+                      Saved Choices
+                    </button>
                   </div>
                 </div>
-            </form>
+              </form>
+            </div>
+
+  
+
+            <Transition.Root show={open} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-in-out duration-500"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in-out duration-500"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 overflow-hidden">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+              <Transition.Child
+                as={Fragment}
+                enter="transform transition ease-in-out duration-500 sm:duration-700"
+                enterFrom="translate-x-full"
+                enterTo="translate-x-0"
+                leave="transform transition ease-in-out duration-500 sm:duration-700"
+                leaveFrom="translate-x-0"
+                leaveTo="translate-x-full"
+              >
+                <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                  <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                    <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+                      <div className="flex items-start justify-between">
+                        <Dialog.Title className="text-lg font-medium text-gray-900">Poll Choices</Dialog.Title>
+                        <div className="ml-3 flex h-7 items-center">
+                          <button
+                            type="button"
+                            className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                            onClick={() => setOpen(false)}
+                          >
+                            <span className="sr-only">Close panel</span>
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="mt-8">
+                        <div className="flow-root">
+                          <ul role="list" className="-my-6 divide-y divide-gray-200">
+                            {products.map((product) => (
+                              <li key={product.id} className="flex py-6">
+                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <img
+                                    src={product.imageSrc}
+                                    alt={product.imageAlt}
+                                    className="h-full w-full object-cover object-center"
+                                  />
+                                </div>
+
+                                <div className="ml-4 flex flex-1 flex-col">
+                                  <div>
+                                    <div className="flex justify-between text-base font-medium text-gray-900">
+                                      <h3>
+                                        <a href={product.href}>{product.name}</a>
+                                      </h3>
+                                      <p className="ml-4">{product.number}</p>
+                                    </div>
+                                    <p className="mt-1 text-sm text-gray-500">{product.description}</p>
+                                  </div>
+                                  <div className="flex flex-1 items-end justify-between text-sm">
+                                    <div className="flex">
+                                      <button
+                                        type="button"
+                                        className="font-medium text-indigo-800 hover:text-indigo-500"
+                                      >
+                                        Remove
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+                      
+                      <p className="mt-0.5 text-sm text-indigo-800">If you are done adding the choices, press the done button.</p>
+                      <div className="mt-6">
+                        <a
+                          href="#"
+                          className="flex items-center justify-center rounded-md border border-transparent bg-indigo-800 px-6 py-3 text-base font-medium text-yellow-300 shadow-sm hover:bg-indigo-700"
+                        >
+                          Done
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
           </div>
-        </main>
+        </div>
+      </Dialog>
+    </Transition.Root>
+
+
+          </main>
         </div> 
-    </>
-    )
+  </>
+)
 }
 
 export default CreatePoll2;
