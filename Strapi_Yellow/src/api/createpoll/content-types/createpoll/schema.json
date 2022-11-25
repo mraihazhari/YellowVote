@@ -21,11 +21,11 @@
     },
     "admin_email": {
       "type": "email",
-      "required": true
+      "required": false
     },
     "poll_code": {
       "type": "uid",
-      "required": true
+      "required": false
     }
   }
 }

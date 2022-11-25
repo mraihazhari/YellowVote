@@ -41,7 +41,8 @@ function CreatePoll() {
     e.preventDefault()
     Axios.post('http://localhost:1337/api/createpolls', body)
     .then(res => {
-      console.log(res)
+      console.log(res);
+      window.open("\CreatePoll2", "_self");
     })
     .catch(err => {
       console.log(err)
