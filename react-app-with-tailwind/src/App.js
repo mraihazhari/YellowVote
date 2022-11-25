@@ -3,6 +3,7 @@ import './index.css';
 import Landing from './landing';
 import Home from './home';
 import CreatePoll from './CreatePoll';
+import CreatePoll2 from './CreatePoll2';
 import SearchPoll from './searchPoll';
 import History from './history';
 import HistoryDetail from './historyDetail';
@@ -21,6 +22,7 @@ function App() {
             <Route exact path="/landing" element={<Landing />} />
             <Route exact path="/home" element={<Home/>} />
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
+            <Route exact path="/CreatePoll2" element={<CreatePoll2 />} />
             <Route exact path="/searchPoll" element={<SearchPoll />} />
             <Route exact path="/history" element={<History />} />
             <Route exact path="/historyDetail" element={<HistoryDetail />} /> 
