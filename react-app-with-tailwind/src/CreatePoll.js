@@ -19,9 +19,13 @@ function classNames(...classes) {
 
 function CreatePoll() {
 
+  const User = JSON.parse(sessionStorage.getItem("user"));
+
   const [data, setdata] = useState({
     title: "",
     description: "",
+    admin_email: ""
+    
   })
   function handle(e){
     const newdata = {...data}
@@ -34,7 +38,8 @@ function CreatePoll() {
     let body = {
       data: {
         title: item.title,
-        description: item.description
+        description: item.description,
+        admin_email: User.emails[0].value
       }
     };
     console.log(body);
