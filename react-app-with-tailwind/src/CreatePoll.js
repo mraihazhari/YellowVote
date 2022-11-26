@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
 import React, { useState } from "react";
 import Axios from 'axios';
+var randomToken = require('random-token');
 
 
 const navigation = [
@@ -24,7 +25,8 @@ function CreatePoll() {
   const [data, setdata] = useState({
     title: "",
     description: "",
-    admin_email: ""
+    admin_email: "",
+    poll_code: ""
     
   })
   function handle(e){
@@ -34,12 +36,15 @@ function CreatePoll() {
     console.log(newdata)
   }
   function submit(e){
+    var token = randomToken(8);
+    console.log(token);
     let item = data;
     let body = {
       data: {
         title: item.title,
         description: item.description,
-        admin_email: User.emails[0].value
+        admin_email: User.emails[0].value,
+        poll_code: token
       }
     };
     console.log(body);
@@ -47,6 +52,7 @@ function CreatePoll() {
     Axios.post('http://localhost:1337/api/createpolls', body)
     .then(res => {
       console.log(res);
+      sessionStorage.setItem("token", token);
       window.open("\CreatePoll2", "_self");
     })
     .catch(err => {

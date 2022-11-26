@@ -24,7 +24,7 @@
       "required": false
     },
     "admin_email": {
-      "type": "string"
+      "type": "email"
     }
   }
 }
