@@ -39,6 +39,9 @@ const products = [
 ]
 
 function CreatePoll2() {
+
+  const [open, setOpen] = useState(false)
+
     return(
        <>
        <Helmet>
