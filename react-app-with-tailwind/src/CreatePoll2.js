@@ -164,6 +164,7 @@ function CreatePoll2() {
             <h1 className="text-5xl font-bold tracking-tight text-indigo-800">Add A Choice</h1>
           </div>
         </header>
+        <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Your VoteCode is xxxxx, save this code and use it to access the poll later.</label>
         <main className="bg-yellow-300">
           <div className="mt-5 md:col-span-2 md:mt-0">
             <form action="#" method="POST" onSubmit={(e) => submit(e)}>
@@ -268,7 +269,7 @@ function CreatePoll2() {
                     </button>
                     <button
                       type="button"
-                      className="absolute right-7 bottom-7 inline-flex right-0 rounded-md border border-transparent bg-blue-700 py-2 px-4 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
+                      className="absolute right-6 bottom-7 inline-flex right-0 rounded-md border border-transparent bg-blue-700 py-2 px-4 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
                       onClick={() => setOpen(true)}
                     >
                       Saved Choices

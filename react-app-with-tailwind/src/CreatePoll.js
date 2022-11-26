@@ -44,7 +44,7 @@ function CreatePoll() {
         title: item.title,
         description: item.description,
         admin_email: User.emails[0].value,
-        poll_code: token
+       poll_code: token
       }
     };
     console.log(body);
