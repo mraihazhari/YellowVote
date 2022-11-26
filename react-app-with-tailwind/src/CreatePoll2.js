@@ -1,7 +1,7 @@
 import { Disclosure, Dialog, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Axios from 'axios';
 var randomToken = require('random-token');
 
@@ -41,8 +41,10 @@ const products = [
 
 function CreatePoll2() {
 
+  const [candidates, setCandidates] = useState([]);
   const [open, setOpen] = useState(false);
   var token = sessionStorage.getItem('token');
+
 
 
   const [data, setdata] = useState({
@@ -59,7 +61,6 @@ function CreatePoll2() {
     console.log(newdata)
   }
   function submit(e){
-    var token = randomToken(8);
     console.log(token);
     let item = data;
     let body = {
@@ -81,6 +82,10 @@ function CreatePoll2() {
     .catch(err => {
       console.log(err)
     })
+  }
+  function save(){
+    window.open("\home", "_self");
+    sessionStorage.removeItem("token");
   }
 
     return(
@@ -363,12 +368,13 @@ function CreatePoll2() {
                       
                       <p className="mt-0.5 text-sm text-indigo-800">If you are done adding the choices, press the done button.</p>
                       <div className="mt-6">
-                        <a
-                          href="#"
+                        <button
+                          type="button"
+                          onClick={() => save()}
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-800 px-6 py-3 text-base font-medium text-yellow-300 shadow-sm hover:bg-indigo-700"
                         >
                           Done
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </div>

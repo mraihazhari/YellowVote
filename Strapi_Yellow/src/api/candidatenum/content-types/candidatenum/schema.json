@@ -19,11 +19,11 @@
     "candidate_name": {
       "type": "string"
     },
-    "poll_code": {
-      "type": "uid"
-    },
     "description": {
       "type": "richtext"
+    },
+    "poll_code": {
+      "type": "string"
     }
   }
 }

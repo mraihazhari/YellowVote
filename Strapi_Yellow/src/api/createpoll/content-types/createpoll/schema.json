@@ -19,12 +19,13 @@
     "description": {
       "type": "richtext"
     },
-    "poll_code": {
-      "type": "uid",
-      "required": false
-    },
     "admin_email": {
       "type": "email"
+    },
+    "poll_code": {
+      "type": "string",
+      "required": false,
+      "unique": true
     }
   }
 }
