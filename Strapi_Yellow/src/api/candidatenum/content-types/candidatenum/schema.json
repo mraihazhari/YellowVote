@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "candidatenums",
+  "info": {
+    "singularName": "candidatenum",
+    "pluralName": "candidatenums",
+    "displayName": "candidatenum",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "candidate_number": {
+      "type": "integer",
+      "unique": false
+    },
+    "candidate_name": {
+      "type": "string"
+    },
+    "poll_code": {
+      "type": "uid"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
