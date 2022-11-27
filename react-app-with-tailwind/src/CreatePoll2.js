@@ -39,15 +39,46 @@ const products = [
   // More products...
 ]
 
-function CreatePoll2() {
+const azhari = [
+  {
+    id: "",
+    attributes: {
+      candidate_name: "",
+      candidate_number: "",
+      description: "",
+      poll_code: "",
+      createdAt: "",
+      updateAt: "",
 
+    }
+  }
+]
+
+
+
+
+
+function CreatePoll2() {
   const [candidates, setCandidates] = useState([]);
   const [open, setOpen] = useState(false);
   var token = sessionStorage.getItem('token');
+  console.log(token);
 
+  useEffect(() => {
+    Axios.get('http://localhost:1337/api/candidatenums', {
+      params: {
+        "filters[poll_code][$eq]": token
+      }
+    }).then((res) => {
+      console.log(res.data);
+      setCandidates(res.data);
+    });
+  }, []);
 
+  console.log(candidates);
+  
 
-  const [data, setdata] = useState({
+  const [poll_data, setpoll_data] = useState({
     candidate_number: "",
     candidate_name: "",
     description: "",
@@ -55,14 +86,14 @@ function CreatePoll2() {
     
   })
   function handle(e){
-    const newdata = {...data}
-    newdata[e.target.id] = e.target.value
-    setdata(newdata)
-    console.log(newdata)
+    const newpoll_data = {...poll_data}
+    newpoll_data[e.target.id] = e.target.value
+    setpoll_data(newpoll_data)
+    console.log(newpoll_data)
   }
   function submit(e){
     console.log(token);
-    let item = data;
+    let item = poll_data;
     let body = {
       data: {
         candidate_name: item.candidate_name,
@@ -77,11 +108,13 @@ function CreatePoll2() {
     .then(res => {
       console.log(res);
       sessionStorage.setItem("token", token);
+      window.location.reload();
       //window.open("\CreatePoll2", "_self");
     })
     .catch(err => {
       console.log(err)
     })
+    
   }
   function save(){
     window.open("\home", "_self");
@@ -164,7 +197,7 @@ function CreatePoll2() {
             <h1 className="text-5xl font-bold tracking-tight text-indigo-800">Add A Choice</h1>
           </div>
         </header>
-        <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Your VoteCode is xxxxx, save this code and use it to access the poll later.</label>
+        <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Your PollCode is {token}, save this code and use it to access the poll later.</label>
         <main className="bg-yellow-300">
           <div className="mt-5 md:col-span-2 md:mt-0">
             <form action="#" method="POST" onSubmit={(e) => submit(e)}>
@@ -179,7 +212,7 @@ function CreatePoll2() {
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                           onChange={(e)=>handle(e)}
-                          value={data.candidate_number}
+                          value={poll_data.candidate_number}
                           type="number"
                           name="candidate_number"
                           id="candidate_number"
@@ -198,7 +231,7 @@ function CreatePoll2() {
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                           onChange={(e)=>handle(e)}
-                          value={data.candidate_name}
+                          value={poll_data.candidate_name}
                           type="text"
                           name="candidate_name"
                           id="candidate_name"
@@ -216,7 +249,7 @@ function CreatePoll2() {
                     <div className="mt-1">
                       <textarea
                         onChange={(e)=>handle(e)}
-                        value={data.description}
+                        value={poll_data.description}
                         id="description"
                         name="description"
                         rows={3}
@@ -327,13 +360,13 @@ function CreatePoll2() {
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            {products.map((product) => (
-                              <li key={product.id} className="flex py-6">
+                          {
+                          candidates.data?.map((item) => (
+                              <li className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center"
+                                   src='https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg'
+                                   className="h-full w-full object-cover object-center"
                                   />
                                 </div>
 
@@ -341,11 +374,11 @@ function CreatePoll2() {
                                   <div>
                                     <div className="flex justify-between text-base font-medium text-gray-900">
                                       <h3>
-                                        <a href={product.href}>{product.name}</a>
+                                        <p>{item.attributes.candidate_name}</p>
                                       </h3>
-                                      <p className="ml-4">{product.number}</p>
+                                      <p className="ml-4">{item.attributes.candidate_number}</p>
                                     </div>
-                                    <p className="mt-1 text-sm text-gray-500">{product.description}</p>
+                                    <p className="mt-1 text-sm text-gray-500">{item.attributes.description}</p>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
                                     <div className="flex">
