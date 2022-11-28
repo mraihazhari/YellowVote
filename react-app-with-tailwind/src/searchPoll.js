@@ -2,6 +2,8 @@ import { LockClosedIcon } from '@heroicons/react/20/solid'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
+import Axios from 'axios';
+import React, { useState } from "react";
 
 const navigation = [
   { name: 'YellowVote', href: './home', current: true },
@@ -16,6 +18,24 @@ function classNames(...classes) {
 }
 
 function SearchPoll() {
+
+
+  const [token_data, settoken_data] = useState({
+    poll_code: ""
+  })
+  function handle(e){
+    const newtoken_data = {...token_data}
+    newtoken_data[e.target.id] = e.target.value
+    settoken_data(newtoken_data)
+    console.log(newtoken_data)
+  }
+
+  function submit(e){
+    e.preventDefault()
+    let item = token_data;
+    sessionStorage.setItem("token", item.poll_code)
+    window.open("\Voting", "_self");
+  }
   return (
     <>
     <Disclosure as="nav" className="bg-blue-800">
@@ -101,7 +121,7 @@ function SearchPoll() {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={(e) => submit(e)}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -109,10 +129,11 @@ function SearchPoll() {
                   VoteCode
                 </label>
                 <input
-                  id="vote-code"
-                  name="code"
-                  type="number"
-                  autoComplete="code"
+                  onChange={(e)=>handle(e)}
+                  value={token_data.poll_code}
+                  id="poll_code"
+                  name="poll_code"
+                  type="text"
                   required
                   className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Insert VoteCode"
