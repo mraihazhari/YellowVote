@@ -21,7 +21,6 @@ const choices = [
     {
       id: 1,
       name: 'Cristiano Penaldo',
-      href: '#',
       imageSrc: 'https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg',
       imageAlt: "Front of men's Basic Tee in black.",
       number: '1',
@@ -30,7 +29,6 @@ const choices = [
     {
         id: 1,
         name: 'Lionel Pessi',
-        href: '#',
         imageSrc: 'https://akcdn.detik.net.id/visual/2022/11/22/arab-saudi-vs-argentina-di-piala-dunia-2022-6_169.jpeg?w=650',
         imageAlt: "Front of men's Basic Tee in black.",
         number: '2',
@@ -41,7 +39,6 @@ const choices = [
 
 function Voting () {
   const [candidates, setCandidates] = useState([]);
-  const [poll, setPoll] = useState([]);
   var token = sessionStorage.getItem('token');
   console.log(token);
 
@@ -54,19 +51,15 @@ function Voting () {
       console.log(res.data);
       setCandidates(res.data);
     });
-    Axios.get('http://localhost:1337/api/createpolls', {
-      params: {
-        "filters[poll_code][$eq]": token
-        }
-        }).then((res) => {
-          console.log(res.data);
-          setPoll(res.data);
-        });
   }, []);
 
-  let title = "";
-
   console.log(candidates);
+
+  let poll = JSON.parse(sessionStorage.getItem("poll"));
+  //console.log(poll.data[0].attributes.description);
+  let title = poll.data[0].attributes.title;
+  let description = poll.data[0].attributes.description;
+
 
   
     return(
@@ -139,10 +132,10 @@ function Voting () {
               </>
             )}
           </Disclosure>
-          <header className="bg-yellow-300">
+          <header className="bg-yellow-300 ">
           <div className="max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl font-bold text-center tracking-tight text-indigo-800">Siapa goat yang sebenarnya</h1>
-            <h2 className="text-2xl font-medium text-center tracking-tight text-indigo-800">Poll Description</h2>
+            <h1 className="text-5xl font-bold tracking-tight text-indigo-800">{title}</h1>
+            <h2 className="text-2xl font-medium tracking-tight text-indigo-800">{description}</h2>
           </div>
         </header>
         <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Click the vote button to submit your choice.</label>
@@ -172,6 +165,7 @@ function Voting () {
               </div> 
               <button
                       type="submit"
+                      href="#"
                       className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
                     >
                       Vote
