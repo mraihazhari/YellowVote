@@ -34,7 +34,7 @@ function SearchPoll() {
     e.preventDefault()
     let item = token_data;
     sessionStorage.setItem("token", item.poll_code)
-    window.open("\Voting", "_self");
+    window.open("\getPoll", "_self");
   }
   return (
     <>
