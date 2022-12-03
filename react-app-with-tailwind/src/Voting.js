@@ -38,6 +38,33 @@ const choices = [
   ]
 
 function Voting () {
+<<<<<<< HEAD
+=======
+  const [candidates, setCandidates] = useState([]);
+  var token = sessionStorage.getItem('token');
+  console.log(token);
+
+  useEffect(() => {
+    Axios.get('https://strapi-production-5df9.up.railway.app/api/candidatenums', {
+      params: {
+        "filters[poll_code][$eq]": token
+      }
+    }).then((res) => {
+      console.log(res.data);
+      setCandidates(res.data);
+    });
+  }, []);
+
+  console.log(candidates);
+
+  let poll = JSON.parse(sessionStorage.getItem("poll"));
+  //console.log(poll.data[0].attributes.description);
+  let title = poll.data[0].attributes.title;
+  let description = poll.data[0].attributes.description;
+
+
+  
+>>>>>>> 7ac042a66ff78a697742a190db23921343fe7559
     return(
         <div className="relative overflow-hidden bg-yellow-300">
             <Helmet>
@@ -141,7 +168,12 @@ function Voting () {
                 
               </div> 
               <button
+<<<<<<< HEAD
                       type="submit"
+=======
+                      type="button"
+                      href="#"
+>>>>>>> 7ac042a66ff78a697742a190db23921343fe7559
                       className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
                     >
                       Vote

@@ -11,7 +11,7 @@ function GetPoll() {
     console.log(token);
 
     useEffect(() => {
-        Axios.get('http://localhost:1337/api/createpolls', {
+        Axios.get('https://strapi-production-5df9.up.railway.app/api/createpolls', {
             params: {
               "filters[poll_code][$eq]": token
               }

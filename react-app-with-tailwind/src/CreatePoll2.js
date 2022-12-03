@@ -65,7 +65,7 @@ function CreatePoll2() {
   console.log(token);
 
   useEffect(() => {
-    Axios.get('http://localhost:1337/api/candidatenums', {
+    Axios.get('https://strapi-production-5df9.up.railway.app/api/candidatenums', {
       params: {
         "filters[poll_code][$eq]": token
       }
@@ -104,7 +104,7 @@ function CreatePoll2() {
     };
     console.log(body);
     e.preventDefault()
-    Axios.post('http://localhost:1337/api/candidatenums', body)
+    Axios.post('https://strapi-production-5df9.up.railway.app/api/candidatenums', body)
     .then(res => {
       console.log(res);
       sessionStorage.setItem("token", token);
