@@ -19,28 +19,41 @@ const choices = [
     {
       id: 1,
       name: 'Cristiano Penaldo',
-      href: './home',
-      imageSrc: 'https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg',
-      imageAlt: "Front of men's Basic Tee in black.",
+      voters: '48',
       number: '1',
-      description: 'Legend emyu, portugal, dan sporting.',
+      imageSrc: 'https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg',
+      imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
-        id: 2,
-        name: 'Lionel Pessi',
-        href: './history',
-        imageSrc: 'https://akcdn.detik.net.id/visual/2022/11/22/arab-saudi-vs-argentina-di-piala-dunia-2022-6_169.jpeg?w=650',
-        imageAlt: "Front of men's Basic Tee in black.",
-        number: '2',
-        description: 'Legend PSG dan argentina.',
-      },
-    // More choices...
+      id: 2,
+      name: 'Lionel Pessi',
+      voters: '35',
+      number: '2',
+      imageSrc: 'https://akcdn.detik.net.id/visual/2022/11/22/arab-saudi-vs-argentina-di-piala-dunia-2022-6_169.jpeg?w=650',
+      imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+    },
+    {
+      id: 3,
+      name: 'LORD LAKAKA',
+      voters: '8',
+      number: '3',
+      imageSrc: 'https://akcdn.detik.net.id/community/media/visual/2022/12/02/romelu-lukaku-4.jpeg?w=700&q=90',
+      imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
+    },
+    {
+      id: 4,
+      name: 'Antony Sinisuka Ginting',
+      voters: '35',
+      number: '4',
+      imageSrc: 'https://img.inews.co.id/media/822/files/inews_new/2022/10/28/antony_1.jpg',
+      imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
+    },
   ]
 
-function Voting () {
+function Results () {
     return(
         <div className="relative overflow-hidden bg-yellow-300">
-            <Helmet>
+        <Helmet>
           <style>{"body { background-color: rgb(253 224 71); }"}</style>
         </Helmet>
         <Disclosure as="nav" className="bg-blue-800">
@@ -110,49 +123,44 @@ function Voting () {
           </Disclosure>
           <header className="bg-yellow-300">
           <div className="py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl font-bold text-center tracking-tight text-indigo-800">Siapakah GOAT Yang Sebenarnya?</h1>
-            <h2 className="text-2xl font-medium text-center tracking-tight text-indigo-800">Poll Description</h2>
+            <h1 className="text-5xl font-bold text-center text-indigo-800">Siapakah GOAT Yang Sebenarnya?</h1>
+            <h2 className="text-2xl font-medium text-center text-indigo-800">Poll Description</h2>
           </div>
         </header>
-        <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Click the vote button to submit your choice.</label>
-          <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {choices.map((choice) => (
-            <div key={choice.id} className="group relative">
-              <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+            <a key={choice.id} className="group">
+              <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
                 <img
                   src={choice.imageSrc}
                   alt={choice.imageAlt}
-                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                  className="h-full w-full object-cover object-center group-hover:opacity-75"
                 />
               </div>
+              
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm font-semibold text-indigo-800">
-                    <a href={choice.href}>
+                <h3 className="text-sm font-semibold text-indigo-800">
+                    <a>
                       <span aria-hidden="true" className="absolute inset-0" />
                       {choice.name}
                     </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-indigo-800">{choice.description}</p>
+                </h3>
+                  <p className="mt-1 text-sm font-medium text-indigo-800">Voters: {choice.voters}</p>
                 </div>
-                <p className="text-sm font-medium text-indigo-800">{choice.id}</p>
-                
+                <p className="text-sm font-medium text-indigo-800">{choice.number}</p>
               </div> 
-              <button
-                      type="submit"
-                      className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
-                    >
-                      Vote
-              </button>
-            </div>
-            
+
+            </a>
           ))}
         </div>
       </div>
-        </div>
+       
+    </div>
+
     )
 }
 
-export default Voting;
+export default Results;

@@ -5,6 +5,7 @@ import Home from './home';
 import CreatePoll from './CreatePoll';
 import CreatePoll2 from './CreatePoll2';
 import Voting from './Voting';
+import Results from './Results';
 import SearchPoll from './searchPoll';
 import History from './history';
 import HistoryDetail from './historyDetail';
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/CreatePoll" element={<CreatePoll />} />
             <Route exact path="/CreatePoll2" element={<CreatePoll2 />} />
             <Route exact path="/Voting" element={<Voting />} />
+            <Route exact path="/Results" element={<Results />} />
             <Route exact path="/searchPoll" element={<SearchPoll />} />
             <Route exact path="/history" element={<History />} />
             <Route exact path="/historyDetail" element={<HistoryDetail />} /> 
