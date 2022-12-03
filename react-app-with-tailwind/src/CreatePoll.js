@@ -49,7 +49,7 @@ function CreatePoll() {
     };
     console.log(body);
     e.preventDefault()
-    Axios.post('http://localhost:1337/api/createpolls', body)
+    Axios.post('https://strapi-production-5df9.up.railway.app/api/createpolls', body)
     .then(res => {
       console.log(res);
       sessionStorage.setItem("token", token);
