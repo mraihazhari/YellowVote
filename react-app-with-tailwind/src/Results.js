@@ -2,6 +2,8 @@ import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, UserCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useState, useEffect } from 'react';
+import Axios  from 'axios';
 
 
 const navigation = [
@@ -52,6 +54,29 @@ const choices = [
 ]
 
 function Results () {
+
+  const poll = sessionStorage.getItem('poll');
+  const token = sessionStorage.getItem('token');
+
+  const [candidates, setCandidates] = useState([]);
+  
+  
+  
+
+  useEffect(() => {
+    Axios.get('https://strapi-production-5df9.up.railway.app/api/candidatenums', {
+      params: {
+        "filters[poll_code][$eq]": token
+      }
+    }).then((res) => {
+      console.log(res.data);
+      setCandidates(res.data);
+    });
+  }, []);
+
+
+  console.log(candidates.data[0].attributes.candidate_name);
+
     return(
         <div className="relative overflow-hidden bg-yellow-300">
         <Helmet>
@@ -131,11 +156,11 @@ function Results () {
         <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-	        {choices.map((choice) => (
-		        <div key={choice.id} className="group relative">
+	        {candidates.data?.map((choice) => (
+		        <div  className="group relative">
 			        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 				        <img
-                  src={choice.imageSrc}
+                  src= 'https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg'
                   className="h-full w-full object-cover object-center"
                 />
               </div>
@@ -145,12 +170,12 @@ function Results () {
                 <h3 className="text-sm font-semibold text-indigo-800">
                     <a>
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {choice.name}
+                      {choice.attributes.candidate_name}
                     </a>
                 </h3>
                   <p className="mt-1 text-sm font-medium text-indigo-800">Voters: {choice.voters}</p>
                 </div>
-                <p className="text-sm font-medium text-indigo-800">{choice.number}</p>
+                <p className="text-sm font-medium text-indigo-800">{choice.attributes.candidate_number}</p>
               </div> 
 
             </div>

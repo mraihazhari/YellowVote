@@ -15,6 +15,7 @@ import Logout_func from './logout';
 import GetPoll from './getPoll';
 import GetHistory from './getHistory';
 import GetHistory2 from './getHistory2';
+import GetResult from './getResult';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 
