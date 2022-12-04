@@ -36,6 +36,9 @@ const polls = [
 ]
   
 function History() {
+
+  var history = JSON.parse(sessionStorage.getItem('history'));
+  console.log(history);
     return (
           <>
           <Disclosure as="nav" className="bg-blue-800">
@@ -120,26 +123,33 @@ function History() {
             </div>
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
               <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-            {polls.map((poll) => (
+            {history.data?.map((poll) => (
               <div key={poll.id} className="group relative">
                 <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                   <img
-                    src={poll.imageSrc}
-                    alt={poll.imageAlt}
+                    src= 'https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg'
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm font-bold text-indigo-800">
-                      <a href={poll.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {poll.name}
-                      </a>
+                    <button
+                    >
+                      <span aria-hidden="true" className="absolute inset-0" />
+                      {poll.attributes.title}
+                    </button>
                     </h3>
-                    <p className="mt-1 text-sm text-indigo-800">{poll.description}</p>
+                    <p className="mt-1 text-sm text-indigo-800">{poll.attributes.description}</p>
                   </div>
                 </div>
+                <button
+                      type="button"
+                      href="#"
+                      className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
+                    >
+                      View History
+              </button>
               </div>
             ))}
           </div>

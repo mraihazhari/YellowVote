@@ -5,9 +5,11 @@ import {useEffect, eseState} from "react";
 import Axios from 'axios';
 
 
+
 function GetHistory() {
     const [poll, setPoll] = useState(null);
-    var test = [] ;
+    const history = [];
+    
     const User = JSON.parse(sessionStorage.getItem("user"));
     let email = User.emails[0].value;
     console.log(email);
@@ -18,11 +20,15 @@ function GetHistory() {
               "filters[participant_email][$eq]": email
               }
               }).then((res) => {
-                console.log(res.data);
+                //console.log(res.data);
                 setPoll(res.data);
 
               });
     }, []);
+
+
+
+    
 
     //candidates.data?.map((choice) => (
         
@@ -31,11 +37,11 @@ function GetHistory() {
     
     if (poll != null) {
         poll.data?.map((choice) => (
-            test.push(choice.attributes.poll_code)
+            history.push(choice.attributes.poll_code)
         ))
-        console.log(test);
-      //sessionStorage.setItem("poll", JSON.stringify(poll));
-      //window.open("\Voting", "_self");
+        console.log(history);
+        sessionStorage.setItem("history", JSON.stringify(history));
+        window.open("\gethistory2", "_self");
     }
 
     else{
