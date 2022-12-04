@@ -61,6 +61,7 @@ function Voting () {
   function handle(candidate_token){
     let body = {
       data:{
+        poll_code: token,
         candidate_code: candidate_token,
         participant_email: User.emails[0].value
       }

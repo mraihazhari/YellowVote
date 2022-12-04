@@ -13,7 +13,7 @@ const navigation = [
   { name: 'YellowVote', href: './home', current: true },
   { name: 'Create', href: './CreatePoll', current: false },
   { name: 'Search', href: './searchPoll', current: false },
-  { name: 'History', href: './history', current: false },
+  { name: 'History', href: './getHistory', current: false },
   { name: 'Logout', href: './logout', current: false },
 ]
 
@@ -39,7 +39,7 @@ const icon = [
     {
       id: 3,
       name: 'View History',
-      href: './history',
+      href: './getHistory',
       imageSrc: historypolling,
       imageAlt: 'Person using a pen to cross a task off a iconivity paper card.',
     },

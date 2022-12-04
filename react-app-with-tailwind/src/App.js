@@ -13,6 +13,7 @@ import Login_func from './login_page' ;
 import VoteCandidate from './voteCandidate';
 import Logout_func from './logout';
 import GetPoll from './getPoll';
+import GetHistory from './getHistory';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="/logout" element={<Logout_func />} />
             <Route exact path="/login_page" element={<Login_func />} />
             <Route exact path="/getPoll" element={<GetPoll />} />
+            <Route exact path="/getHistory" element={<GetHistory />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}
