@@ -45,6 +45,8 @@ function Voting () {
   var token = sessionStorage.getItem('token');
   console.log(token);
 
+  const User = JSON.parse(sessionStorage.getItem("user"));
+
   useEffect(() => {
     Axios.get('https://strapi-production-5df9.up.railway.app/api/candidatenums', {
       params: {
@@ -55,6 +57,23 @@ function Voting () {
       setCandidates(res.data);
     });
   }, []);
+
+  function handle(candidate_token){
+    let body = {
+      data:{
+        candidate_code: candidate_token,
+        participant_email: User.emails[0].value
+      }
+    }
+    Axios.post('https://strapi-production-5df9.up.railway.app/api/voters', body)
+    .then((res) => {
+      console.log(res);
+      window.open("\home", "_self");
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 
   console.log(candidates);
 
@@ -137,34 +156,35 @@ function Voting () {
           </Disclosure>
           <header className="bg-yellow-300">
           <div className="py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl font-bold text-center tracking-tight text-indigo-800">Siapakah GOAT Yang Sebenarnya?</h1>
-            <h2 className="text-2xl font-medium text-center tracking-tight text-indigo-800">Poll Description</h2>
+            <h1 className="text-5xl font-bold text-center tracking-tight text-indigo-800">{title}</h1>
+            <h2 className="text-2xl font-medium text-center tracking-tight text-indigo-800">{description}</h2>
           </div>
         </header>
         <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Click the vote button to submit your choice.</label>
           <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {choices.map((choice) => (
-            <div key={choice.id} className="group relative">
+        {candidates.data?.map((choice) => (
+            <div className="group relative">
               <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
                 <img
-                  src={choice.imageSrc}
-                  alt={choice.imageAlt}
+                  src='https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg'
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm font-semibold text-indigo-800">
-                    <a href={choice.href}>
+                    <button
+                      onClick={() => handle(choice.attributes.candidate_code)}
+                    >
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {choice.name}
-                    </a>
+                      {choice.attributes.candidate_name}
+                    </button>
                   </h3>
-                  <p className="mt-1 text-sm text-indigo-800">{choice.description}</p>
+                  <p className="mt-1 text-sm text-indigo-800">{choice.attributes.description}</p>
                 </div>
-                <p className="text-sm font-medium text-indigo-800">{choice.id}</p>
+                <p className="text-sm font-medium text-indigo-800">{choice.attributes.candidate_number}</p>
                 
               </div> 
               <button

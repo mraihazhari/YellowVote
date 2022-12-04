@@ -63,6 +63,7 @@ function CreatePoll2() {
   const [open, setOpen] = useState(false);
   var token = sessionStorage.getItem('token');
   console.log(token);
+  var candidate_token = randomToken(8);
 
   useEffect(() => {
     Axios.get('https://strapi-production-5df9.up.railway.app/api/candidatenums', {
@@ -99,7 +100,8 @@ function CreatePoll2() {
         candidate_name: item.candidate_name,
         candidate_number: item.candidate_number,
         description: item.description,
-        poll_code: token
+        poll_code: token,
+        candidate_code: candidate_token
       }
     };
     console.log(body);
