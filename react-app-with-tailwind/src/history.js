@@ -44,7 +44,7 @@ function History() {
 
     console.log(poll_code);
     sessionStorage.setItem('token', poll_code);
-    window.location.href = './results';
+    window.location.href = './countVote';
 
   }
 
