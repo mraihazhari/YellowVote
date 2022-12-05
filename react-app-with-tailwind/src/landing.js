@@ -14,7 +14,7 @@ function classNames(...classes) {
 function Landing() {
 
 const google  = ()=>{
-  window.open("http://localhost:5000/auth/google/callback");
+  window.open("https://backend.yellowvoteui.com/auth/google/callback");
 }
   return (   
     
