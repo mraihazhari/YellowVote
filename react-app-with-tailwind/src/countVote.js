@@ -8,9 +8,10 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
  
 
 
-function countVote() {
-    const [poll, setPoll] = useState(null);
-    const token = JSON.parse(sessionStorage.getItem('history'));
+function CountVote() {
+    const [candidates, setCandidates] = useState(null);
+    const token = sessionStorage.getItem('token');
+    const candidate_code = [];
 
     console.log(token);
 
@@ -21,13 +22,18 @@ function countVote() {
             }
         }).then((res) => {
             console.log(res.data);
-            setPoll(res.data);
+            setCandidates(res.data);
         });
     }, []);
 
-    if (poll != null) {
-        sessionStorage.setItem("history", JSON.stringify(poll));
-        window.open("\history", "_self");
+    if (candidates != null) {
+        candidates.data?.map((choice) => (
+            candidate_code.push(choice.attributes.candidate_code)
+        ))
+        console.log(candidate_code);
+        sessionStorage.setItem("candidates", JSON.stringify(candidates));
+        sessionStorage.setItem("candidate_code", JSON.stringify(candidate_code));
+        window.open("\countVote2", "_self");
     }
 
     else{
@@ -40,4 +46,4 @@ function countVote() {
     
 }
 
-export default countVote;
+export default CountVote;

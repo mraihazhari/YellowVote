@@ -58,24 +58,9 @@ function Results () {
   const poll = sessionStorage.getItem('poll');
   const token = sessionStorage.getItem('token');
 
-  const [candidates, setCandidates] = useState([]);
-  
-  
-  
+  const candidates = JSON.parse(sessionStorage.getItem('candidates'));
 
-  useEffect(() => {
-    Axios.get('https://strapi-production-5df9.up.railway.app/api/candidatenums', {
-      params: {
-        "filters[poll_code][$eq]": token
-      }
-    }).then((res) => {
-      console.log(res.data);
-      setCandidates(res.data);
-    });
-  }, []);
-
-
-  console.log(candidates.data[0].attributes.candidate_name);
+  console.log(candidates);
 
     return(
         <div className="relative overflow-hidden bg-yellow-300">
@@ -160,7 +145,7 @@ function Results () {
 		        <div  className="group relative">
 			        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 				        <img
-                  src= 'https://statik.tempo.co/data/2022/10/21/id_1150509/1150509_720.jpg'
+                  src= 'https://i.pinimg.com/originals/d7/25/1e/d7251e692ccbbcdad3a8a9d3afeaf8e1.jpg'
                   className="h-full w-full object-cover object-center"
                 />
               </div>
@@ -173,7 +158,7 @@ function Results () {
                       {choice.attributes.candidate_name}
                     </a>
                 </h3>
-                  <p className="mt-1 text-sm font-medium text-indigo-800">Voters: {choice.voters}</p>
+                  <p className="mt-1 text-sm font-medium text-indigo-800">Voters: {choice.attributes.vote}</p>
                 </div>
                 <p className="text-sm font-medium text-indigo-800">{choice.attributes.candidate_number}</p>
               </div> 

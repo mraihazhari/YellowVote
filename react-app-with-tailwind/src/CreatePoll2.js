@@ -101,7 +101,8 @@ function CreatePoll2() {
         candidate_number: item.candidate_number,
         description: item.description,
         poll_code: token,
-        candidate_code: candidate_token
+        candidate_code: candidate_token,
+        vote: 0
       }
     };
     console.log(body);
@@ -367,7 +368,7 @@ function CreatePoll2() {
                               <li className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
-                                   src='https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg'
+                                   src='https://i.pinimg.com/originals/d7/25/1e/d7251e692ccbbcdad3a8a9d3afeaf8e1.jpg'
                                    className="h-full w-full object-cover object-center"
                                   />
                                 </div>
