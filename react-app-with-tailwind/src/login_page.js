@@ -8,7 +8,7 @@ function Login_func() {
     const [user, setUser] = useState(null);
     useEffect(() => {
       const getUser = () => {
-        fetch("http://localhost:5000/auth/login/success", {
+        fetch("https://backend.yellowvoteui.com/auth/login/success", {
           method: "GET",
           credentials: "include",
           headers: {
