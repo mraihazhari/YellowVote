@@ -55,13 +55,26 @@ const choices = [
 
 function Results () {
 
-  const poll = sessionStorage.getItem('poll');
+
+  const [poll, setPoll] = useState(null);
   const token = sessionStorage.getItem('token');
 
   const candidates = JSON.parse(sessionStorage.getItem('candidates'));
 
   console.log(candidates);
 
+  useEffect(() => {
+    Axios.get('https://strapi-production-5df9.up.railway.app/api/createpolls', {
+        params: {
+          "filters[poll_code][$eq]": token
+          }
+          }).then((res) => {
+            console.log(res.data.attributes);
+            setPoll(res.data);
+          });
+}, []);
+   // console.log(poll.data[0].attributes.title);
+if(poll != null){
     return(
         <div className="relative overflow-hidden bg-yellow-300">
         <Helmet>
@@ -134,8 +147,8 @@ function Results () {
           </Disclosure>
           <header className="bg-yellow-300">
           <div className="py-6 px-4 sm:px-6 lg:px-8">
-            <h1 className="text-5xl font-bold text-center text-indigo-800">Siapakah GOAT Yang Sebenarnya?</h1>
-            <h2 className="text-2xl font-medium text-center text-indigo-800">Poll Description</h2>
+            <h1 className="text-5xl font-bold text-center text-indigo-800">{poll.data[0].attributes.title}</h1>
+            <h2 className="text-2xl font-medium text-center text-indigo-800">{poll.data[0].attributes.description}</h2>
           </div>
         </header>
         <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -169,6 +182,14 @@ function Results () {
       </div>
     </div>
     )
+          }
+    else{
+      return(
+        <div>
+          <p>loading</p>
+        </div>
+      )
+    }
 }
 
 export default Results;
