@@ -4,6 +4,10 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
 import Axios from 'axios';
 import React, { useState } from "react";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const navigation = [
   { name: 'YellowVote', href: './home', current: true },
@@ -39,6 +43,7 @@ function SearchPoll() {
     let item = token_data;
     console.log(item.poll_code);
     sessionStorage.setItem("token", item.poll_code);
+    
     Axios.get('https://strapi-production-5df9.up.railway.app/api/voters', {
       params: {
         "filters[poll_code][$eq]": item.poll_code,
@@ -49,8 +54,11 @@ function SearchPoll() {
           console.log(res.data);
           console.log(res.data.data.length);
           if (res.data.data.length > 0) {
-            alert("Anda sudah pernah memilih atau kode salah");
-            
+              toast.error("You have already voted in this poll", {
+                position: "top-center",
+                autoClose: 3000,
+              });
+         
           } else {
             window.open("\getPoll", "_self");
             
@@ -175,7 +183,9 @@ function SearchPoll() {
             </div>
           </form>
         </div>
+        
       </div>
+      <ToastContainer />
     </>
   )
 }

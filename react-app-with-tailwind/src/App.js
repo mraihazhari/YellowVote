@@ -20,6 +20,8 @@ import CountVote2 from './countVote2';
 import GetResult from './getResult';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
+import BasicAlerts from './basicAlerts';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
             <Route exact path="/getHistory2" element={<GetHistory2 />} />
             <Route exact path="/countVote" element={<CountVote />} />
             <Route exact path="/countVote2" element={<CountVote2 />} />
+            <Route exact path="/basicAlert" element={<BasicAlerts />} />
             <Route
               path="*"
               element = {<Navigate to="/landing" />}
