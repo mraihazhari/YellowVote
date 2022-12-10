@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 import Axios from 'axios';
 import ReactLoading from 'react-loading';
+import { toast } from 'react-toastify';
 
 
 
@@ -21,8 +22,15 @@ function GetHistory() {
               "filters[participant_email][$eq]": email
               }
               }).then((res) => {
-                //console.log(res.data);
-                setPoll(res.data);
+                console.log(res.data.data.length);
+                if(res.data.data.length == 0){
+                    window.open("\home", "_self");
+                    alert("You have not participated in any poll yet");
+                }
+                else{
+                    setPoll(res.data);
+                }
+                
 
               });
     }, []);

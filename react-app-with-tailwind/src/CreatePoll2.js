@@ -79,7 +79,6 @@ function CreatePoll2() {
   }, []);
 
   console.log(candidates);
-  
 
   const [poll_data, setpoll_data] = useState({
     candidate_number: "",

@@ -109,7 +109,7 @@ console.log(JSON.parse(JSON.stringify(candidate_data)));
 
 const options = {
   animationEnabled: true,
-  backgroundColor: "#dff9fb",
+  backgroundColor: "white",
   title: {
     text: "Poll Results",
     fontSize: 34,
@@ -130,6 +130,8 @@ const options = {
     dataPoints: candidate_data
   }]
 }
+
+
 console.log(options.data[0].dataPoints);
    // console.log(poll.data[0].attributes.title);
 if(poll != null){
@@ -209,31 +211,36 @@ if(poll != null){
             <h2 className="text-2xl font-medium text-center text-indigo-800">{poll.data[0].attributes.description}</h2>
           </div>
         </header>
-        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 ">
         
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-2 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
 	        {candidates.data?.map((choice) => (
 		        <div  className="group relative">
-			        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-				        <img
-                  src= 'https://i.pinimg.com/originals/d7/25/1e/d7251e692ccbbcdad3a8a9d3afeaf8e1.jpg'
-                  className="h-full w-full object-cover object-center"
-                />
-              </div>
-              
-              <div className="mt-4 flex justify-between">
-                <div>
-                <h3 className="text-sm font-semibold text-indigo-800">
-                    <a>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {choice.attributes.candidate_name}
-                    </a>
-                </h3>
-                  <p className="mt-1 text-sm font-medium text-indigo-800">Voters: {choice.attributes.vote}</p>
-                </div>
-                <p className="text-sm font-medium text-indigo-800">{choice.attributes.candidate_number}</p>
-              </div> 
-
+			        <div className="w-full rounded-lg shadow-md lg:max-w-sm bg-white border-solid border-2 border-indigo-600">
+            <img
+                className="object-cover w-full h-48"
+                src="https://i.pinimg.com/originals/d7/25/1e/d7251e692ccbbcdad3a8a9d3afeaf8e1.jpg"
+                alt="image"
+            />
+            <div className="p-4">
+                <h4 className="text-xl font-semibold tracking-tight text-blue-600">
+                    {choice.attributes.candidate_number}. {choice.attributes.candidate_name}
+                </h4>
+                <p className="mb-2 leading-normal">
+                    {choice.attributes.description}
+                    
+                </p>
+                <br></br>
+                <a className="px-4 py-2 text-lg text-white bg-blue-500 rounded shadow">
+                    Total Vote : {choice.attributes.vote}
+                </a>
+            </div>
+            <div className="mb-3 mt-2 w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700">
+            <div className="bg-blue-600 h-6 text-xs font-bold text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: JSON.stringify((choice.attributes.vote * 100) / participant)+"%"}}>{Math.round((choice.attributes.vote * 100) / participant)}%</div>
+            </div>
+        </div>
+        
+            
             </div>
           ))}
         </div>
