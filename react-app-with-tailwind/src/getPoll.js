@@ -3,6 +3,7 @@ import './index.css';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
 import Axios from 'axios';
+import ReactLoading from 'react-loading';
 
 
 function GetPoll() {
@@ -28,7 +29,15 @@ function GetPoll() {
     }
 
     else{
-        return <p>Loading profile...</p>;
+      return(
+        <ReactLoading
+        type={"spin"}
+        color={"#4834d4"}
+        height={100}
+        width={100}
+        className="mx-auto mt-20 text-center text-white text-2xl font-bold"
+        />
+    )
     }
   
     

@@ -61,7 +61,8 @@ const azhari = [
 function CreatePoll2() {
   const [candidates, setCandidates] = useState([]);
   const [open, setOpen] = useState(false);
-  var token = sessionStorage.getItem('token');
+  const [image, setImage] = useState('');
+  var token = sessionStorage.getItem("token");
   console.log(token);
   var candidate_token = randomToken(8);
 
@@ -119,10 +120,22 @@ function CreatePoll2() {
     })
     
   }
+  function DeleteCandidate(id){
+    Axios.delete('https://strapi-production-5df9.up.railway.app/api/candidatenums/' + id)
+    .then(res => {
+      console.log(res);
+      window.location.reload();
+    })
+    .catch(err => {
+      console.log(err)
+    }
+    )
+  }
   function save(){
     window.open("\home", "_self");
     sessionStorage.removeItem("token");
   }
+
 
     return(
        <>
@@ -287,7 +300,7 @@ function CreatePoll2() {
                             className="relative cursor-pointer rounded-md bg-yellow-300 font-medium text-blue-700 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
                           >
                             <span>Upload a file</span>
-                            <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                            <input id="file-upload" name="file-upload" type="file" className="sr-only"/>
                           </label>
                           <p className="pl-1">or drag and drop</p>
                         </div>
@@ -387,6 +400,7 @@ function CreatePoll2() {
                                     <div className="flex">
                                       <button
                                         type="button"
+                                        onClick={() => DeleteCandidate(item.id)}
                                         className="font-medium text-indigo-800 hover:text-indigo-500"
                                       >
                                         Remove

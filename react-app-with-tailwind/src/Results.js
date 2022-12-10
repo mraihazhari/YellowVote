@@ -4,6 +4,12 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { useState, useEffect } from 'react';
 import Axios  from 'axios';
+import { Component } from 'react';
+//import CanvasJSReact from './canvasjs.react';
+//var CanvasJS = CanvasJSReact.CanvasJS;
+//var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import {CanvasJSChart} from 'canvasjs-react-charts';
+import ReactLoading from 'react-loading';
 
 
 const navigation = [
@@ -73,6 +79,58 @@ function Results () {
             setPoll(res.data);
           });
 }, []);
+console.log(candidates);
+
+const candidate_data = [];
+let count_data = 0;
+
+candidates.data?.map((candidate) => {
+  count_data = count_data + candidate.attributes.vote;
+})
+
+let participant;
+
+if(count_data != 0){
+   participant = count_data;
+  console.log(participant);
+}
+
+
+
+candidates.data?.map((candidate) => {
+  candidate_data.push({
+    name: candidate.attributes.candidate_name, 
+    y: (candidate.attributes.vote * 100) / participant
+  })
+})
+console.log(candidate_data);
+console.log(JSON.parse(JSON.stringify(candidate_data)));
+
+
+const options = {
+  animationEnabled: true,
+  backgroundColor: "#dff9fb",
+  title: {
+    text: "Poll Results",
+    fontSize: 34,
+    fontColor: "#2e86de",
+  },
+  subtitles: [{
+    verticalAlign: "center",
+    fontSize: 24,
+    dockInsidePlotArea: true
+  }],
+  data: [{
+    type: "doughnut",
+    showInLegend: true,
+    indexLabel: "{name}: {y}",
+    indexLabelFontSize: 20,
+    indexLabelFontColor: "#2e86de",
+    yValueFormatString: "#,###'%'",
+    dataPoints: candidate_data
+  }]
+}
+console.log(options.data[0].dataPoints);
    // console.log(poll.data[0].attributes.title);
 if(poll != null){
     return(
@@ -180,15 +238,25 @@ if(poll != null){
           ))}
         </div>
       </div>
+      <div>
+			<CanvasJSChart options = {options}
+				/* onRef={ref => this.chart = ref} */
+			/>
+			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+		</div>
     </div>
     )
           }
     else{
       return(
-        <div>
-          <p>loading</p>
-        </div>
-      )
+        <ReactLoading
+        type={"spin"}
+        color={"#4834d4"}
+        height={100}
+        width={100}
+        className="mx-auto mt-20 text-center text-white text-2xl font-bold"
+        />
+    )
     }
 }
 

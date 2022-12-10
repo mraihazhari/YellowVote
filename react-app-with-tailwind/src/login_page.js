@@ -2,6 +2,7 @@ import { BrowserRouter as Router,Routes, Route, Navigate, json, redirect } from 
 import './index.css';
 import React, { useState } from "react";
 import {useEffect, eseState} from "react";
+import ReactLoading from "react-loading";
 
 
 function Login_func() {
@@ -38,7 +39,15 @@ function Login_func() {
     }
 
     else{
-        return <p>Loading profile...</p>;
+      return(
+        <ReactLoading
+        type={"spin"}
+        color={"#4834d4"}
+        height={100}
+        width={100}
+        className="mx-auto mt-20 text-center text-white text-2xl font-bold"
+        />
+    )
     }
   
     

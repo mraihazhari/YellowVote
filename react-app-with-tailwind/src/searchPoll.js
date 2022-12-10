@@ -19,6 +19,10 @@ function classNames(...classes) {
 
 function SearchPoll() {
 
+  const User = JSON.parse(sessionStorage.getItem("user"));
+  console.log(User.emails[0].value);
+  let email = User.emails[0].value;
+
 
   const [token_data, settoken_data] = useState({
     poll_code: ""
@@ -33,8 +37,26 @@ function SearchPoll() {
   function submit(e){
     e.preventDefault()
     let item = token_data;
-    sessionStorage.setItem("token", item.poll_code)
-    window.open("\getPoll", "_self");
+    console.log(item.poll_code);
+    sessionStorage.setItem("token", item.poll_code);
+    Axios.get('https://strapi-production-5df9.up.railway.app/api/voters', {
+      params: {
+        "filters[poll_code][$eq]": item.poll_code,
+        "filters[participant_email][$eq]": email
+        }
+      })
+        .then((res) => {
+          console.log(res.data);
+          console.log(res.data.data.length);
+          if (res.data.data.length > 0) {
+            alert("Anda sudah pernah memilih atau kode salah");
+            
+          } else {
+            window.open("\getPoll", "_self");
+            
+          }
+        })
+    
   }
   return (
     <>
