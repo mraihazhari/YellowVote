@@ -159,7 +159,7 @@ function Home() {
                               <div className="rounded-md shadow">
                                 <a
                                   href= {icon.href}
-                                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-700 px-8 py-3 text-base font-bold text-yellow-300 hover:bg-indigo-800 md:py-4 md:px-10 md:text-2xl"
+                                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-700 px-8 py-3 text-base font-bold text-yellow-300 hover:bg-blue-900 md:py-4 md:px-10 md:text-2xl"
                                 >
                                   {icon.name}
                                 </a>

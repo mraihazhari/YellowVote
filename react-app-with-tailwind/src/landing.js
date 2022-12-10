@@ -103,7 +103,7 @@ const google  = ()=>{
                 <div className="mt-3 sm:mt-0 sm:ml-3" onClick={google}>
                   <a
                     href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-blue-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-blue-800 px-8 py-3 text-base font-medium text-yellow-300 hover:bg-blue-900 md:py-4 md:px-10 md:text-lg"
                   >
                     Log in with Google
                   </a>
