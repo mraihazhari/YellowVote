@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Helmet } from "react-helmet";
 import React, { Fragment, useEffect, useState } from "react";
 import Axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 var randomToken = require('random-token');
 
 const navigation = [
@@ -440,6 +441,7 @@ function CreatePoll2() {
 
           </main>
         </div> 
+        <ToastContainer />
   </>
 )
 }
