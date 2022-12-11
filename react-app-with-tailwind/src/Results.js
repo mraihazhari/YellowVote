@@ -111,9 +111,6 @@ const options = {
   animationEnabled: true,
   backgroundColor: "white",
   title: {
-    text: "Poll Results",
-    fontSize: 34,
-    fontColor: "#2e86de",
   },
   subtitles: [{
     verticalAlign: "center",
@@ -213,7 +210,7 @@ if(poll != null){
         </header>
         <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 ">
         
-        <div className="mt-2 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+        <div className="mt-2 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
 	        {candidates.data?.map((choice) => (
 		        <div  className="group relative">
 			        <div className="w-full rounded-lg shadow-md lg:max-w-sm bg-white border-solid border-2 border-indigo-600">
@@ -245,6 +242,17 @@ if(poll != null){
           ))}
         </div>
       </div>
+      <div className="w-full p-4 bg-white rounded-lg shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700 mt-2 mb-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+        <div className='lg:ml-20 text-center lg:text-left sm:text-left'>
+    <h1 class="mb-2 text-4xl font-bold text-blue-700 dark:text-white">Poll Results</h1>
+    <p class="mb-2 text-xl text-gray-500 sm:text-xl dark:text-gray-400">{poll.data[0].attributes.title}</p>
+    </div>
+    <div className='lg:mr-20 text-center lg:text-right sm:text-right'>
+    <h1 class="mb-2 text-4xl font-bold text-blue-700 dark:text-white">{participant}</h1>
+    <p class="mb-2 text-xl text-gray-500 sm:text-xl dark:text-gray-400">Poll Participants</p>
+    </div>
+    
+</div>
       <div>
 			<CanvasJSChart options = {options}
 				/* onRef={ref => this.chart = ref} */

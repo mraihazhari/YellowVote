@@ -108,10 +108,17 @@ const google  = ()=>{
                     Log in with Google
                   </a>
                 </div>
+                
               </div>
+              
             </div>
+            
+            
           </main>
+          
+          
       </div>
+      
   )
 }
 

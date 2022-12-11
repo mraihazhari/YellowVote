@@ -132,36 +132,19 @@ function History() {
               </div>
             </div>
             <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
             {history.data?.map((poll) => (
-              <div className="group relative">
-                <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
-                  <img
-                    src= "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Logo_vote.svg/2048px-Logo_vote.svg.png"
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
-                </div>
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm font-bold text-indigo-800">
-                    <button
-                      onClick={() => handle(poll.attributes.poll_code)}
-                    >
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {poll.attributes.title}
-                    </button>
-                    </h3>
-                    <p className="mt-1 text-sm text-indigo-800">{poll.attributes.description}</p>
-                  </div>
-                </div>
-                <button
-                      type="button"
-                      href="#"
-                      className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
-                    >
-                      View History
-              </button>
+              <p href="#" class="flex flex-col items-center bg-white border rounded-lg shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+              <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Logo_vote.svg/2048px-Logo_vote.svg.png" alt="" />
+              <div class="flex flex-col justify-between p-4 leading-normal">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{poll.attributes.title}</h5>
+                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{poll.attributes.description}</p>
+                  <button  onClick={() => handle(poll.attributes.poll_code)} class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            View History & Results
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+        </button>
               </div>
+          </p>
             ))}
           </div>
             </div>

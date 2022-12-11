@@ -166,7 +166,7 @@ function Voting () {
         <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Click the vote button to submit your choice.</label>
           <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 
-        <div className="mt-2 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+        <div className="mt-2 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
         {candidates.data?.map((choice) => (
             <div className="group relative">
               <div className="w-full rounded-lg shadow-md lg:max-w-sm bg-white border-solid border-2 border-indigo-600">
