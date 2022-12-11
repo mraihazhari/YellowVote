@@ -69,6 +69,8 @@ function Voting () {
     Axios.post('https://strapi-production-5df9.up.railway.app/api/voters', body)
     .then((res) => {
       console.log(res);
+      sessionStorage.removeItem("poll");
+      sessionStorage.removeItem("token");
       window.open("\home", "_self");
     })
     .catch((err) => {
@@ -164,37 +166,38 @@ function Voting () {
         <label className="py-px block text-base text-center bg-blue-700 font-medium text-yellow-300">Click the vote button to submit your choice.</label>
           <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-2 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
         {candidates.data?.map((choice) => (
             <div className="group relative">
-              <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+              <div className="w-full rounded-lg shadow-md lg:max-w-sm bg-white border-solid border-2 border-indigo-600">
                 <img
                   src='https://i.pinimg.com/originals/d7/25/1e/d7251e692ccbbcdad3a8a9d3afeaf8e1.jpg'
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
-              </div>
+              
               <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm font-semibold text-indigo-800">
+                <div className="p-4">
+                  <h4 className="text-xl font-semibold tracking-tight text-blue-600">
                     <button
                       onClick={() => handle(choice.attributes.candidate_code)}
                     >
                       <span aria-hidden="true" className="absolute inset-0" />
-                      {choice.attributes.candidate_name}
+                      {choice.attributes.candidate_number}. {choice.attributes.candidate_name}
                     </button>
-                  </h3>
+                  </h4>
                   <p className="mt-1 text-sm text-indigo-800">{choice.attributes.description}</p>
                 </div>
-                <p className="text-sm font-medium text-indigo-800">{choice.attributes.candidate_number}</p>
+                
                 
               </div> 
               <button
                       type="button"
                       href="#"
-                      className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-yellow-300 shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
+                      className="flex w-full items-center justify-center my-3 rounded-md border border-transparent bg-blue-700 py-2 px-20 text-sm font-medium text-white shadow-sm hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2"
                     >
                       Vote
               </button>
+            </div>
             </div>
             
           ))}
